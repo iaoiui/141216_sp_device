@@ -1,18 +1,18 @@
 @charset "UTF-8";
 
 #circle {
-	background: #d5fa70;
-	position: absolute;
-	top: 50%;
-	left: 50%;
+  background: #d5fa70;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 #lux_txt {
-	width: 100%;
-	position: absolute;
-	top: 50%;
-	color: #000000;
-	font-size: 2em;
-	font-weight: bold;
-	text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  color: #000000;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
 }

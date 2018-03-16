@@ -1,68 +1,54 @@
-(function () {
-  var bu;
-  var ru;
-  var tsu;
+{
+  const FPS = 60;
 
-  var fps = 60;
+  let setIntervalId;
+  let bu = $('#font_1');
+  let ru = $('#font_2');
+  let tsu = $('#font_3');
 
-  var setIntervalId;
-
-  $(function () {
-    bu = $("#font_1");
-    ru = $("#font_2");
-    tsu = $("#font_3");
-
-    $(window).on("touchend", touchendHandler);
-  });
+  $(window).on('touchend', touchendHandler);
 
   function touchendHandler() {
-    var mSec = 2000;
+    // 2秒間
+    const DURATION = 2000;
     // バイブレーション
-    navigator.vibrate(mSec);
+    navigator.vibrate(DURATION);
     startTxtAnime();
-    setTimeout(stopTxtAnime, mSec);
+    setTimeout(stopTxtAnime, DURATION);
   }
 
   function startTxtAnime() {
     stopTxtAnime();
 
-    setIntervalId = setInterval(txtUpdate, fps / 1000);
+    setIntervalId = setInterval(txtUpdate, FPS / 1000);
   }
 
   function stopTxtAnime() {
     if (setIntervalId) clearInterval(setIntervalId);
 
-    bu.css({
-      top: 0,
-      left: 0
-    });
-
-    ru.css({
-      top: 0,
-      left: 0
-    });
-
-    tsu.css({
-      top: 0,
-      left: 0
-    });
+    bu.css({transform: `translate(0px, 0px)`});
+    ru.css({transform: `translate(0px, 0px)`});
+    tsu.css({transform: `translate(0px, 0px)`});
   }
 
   function txtUpdate() {
-    var l = 10;
+    const l = 10;
     bu.css({
-      top: Math.floor(Math.random() * l) - l / 2,
-      left: Math.floor(Math.random() * l) - l / 2
+      transform: `translate(
+        ${(Math.random() - 0.5) * l}px,
+        ${(Math.random() - 0.5) * l}px)`
     });
 
     ru.css({
-      top: Math.floor(Math.random() * l) - l / 2,
-      left: Math.floor(Math.random() * l) - l / 2
+      transform: `translate(
+        ${(Math.random() - 0.5) * l}px,
+        ${(Math.random() - 0.5) * l}px)`
     });
 
     tsu.css({
-      top: Math.floor(Math.random() * l) - l / 2,
-      left: Math.floor(Math.random() * l) - l / 2
+      transform: `translate(
+        ${(Math.random() - 0.5) * l}px,
+        ${(Math.random() - 0.5) * l}px)`
     });
   }
-})();
+}

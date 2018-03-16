@@ -9,19 +9,10 @@
 	left: 50%;
 }
 
-#txt div {
-	float: left;
-	position: relative;
+#txt {
+	display: flex;
+	align-items: end;
 }
-
-#txt div + div {
-	margin: 0 0 0 5px;
-}
-
-#txt #font_1 {
-	margin-top: 2px;
-}
-
-#txt #font_3 {
-	margin-top: 34px;
+#txt > div {
+	margin-right: 10px;
 }
