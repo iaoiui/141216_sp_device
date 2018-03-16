@@ -1,18 +1,16 @@
 @charset "UTF-8";
 
-#txt {
-	width: 240px;
-	height: 84px;
-	margin: -42px 0 0 -120px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #txt {
-	display: flex;
-	align-items: end;
+  display: flex;
+  align-items: end;
 }
-#txt > div {
-	margin-right: 10px;
+
+#txt > img {
+  margin-right: 10px;
 }

@@ -2,9 +2,9 @@
   const FPS = 60;
 
   let setIntervalId;
-  let bu = $('#font_1');
-  let ru = $('#font_2');
-  let tsu = $('#font_3');
+  const bu = $('img[alt="ぶ"]');
+  const ru = $('img[alt="る"]');
+  const tsu = $('img[alt="っ"]');
 
   $(window).on('touchend', touchendHandler);
 
@@ -13,6 +13,8 @@
     const DURATION = 2000;
     // バイブレーション
     navigator.vibrate(DURATION);
+
+    // 演出
     startTxtAnime();
     setTimeout(stopTxtAnime, DURATION);
   }
