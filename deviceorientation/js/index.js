@@ -1,33 +1,24 @@
-(function () {
+let $zo = $('#zo');
+window.addEventListener(
+  'deviceorientation',
+  deviceOrientationHandler);
 
-  var $zo;
+/** デバイスが傾いたときのイベントです。 */
+function deviceOrientationHandler(event) {
+  //ジャイロセンサー情報取得
+  // X軸
+  const beta = event.beta;
+  // Y軸
+  const gamma = event.gamma;
+  // Z軸
+  const alpha = event.alpha;
+  let html = ``;
+  html += 'X回転 : ' + beta + '<br>';
+  html += 'Y回転 : ' + gamma + '<br>';
+  html += 'Z回転 : ' + alpha;
+  $('#debug').html(html);
 
-  $(function () {
-    $zo = $("#zo");
-    window.addEventListener("deviceorientation", deviceorientationHandler);
+  $zo.css({
+    'transform': 'rotateX(' + (180 + beta) + 'deg) rotateY(' + (180 + gamma) + 'deg) rotateZ(' + alpha + 'deg)'
   });
-
-  /**
-   *
-   * @param event
-   */
-  function deviceorientationHandler(event) {
-    //ジャイロセンサー情報取得
-    // X軸
-    var beta = event.beta;
-    // Y軸
-    var gamma = event.gamma;
-    // Z軸
-    var alpha = event.alpha;
-    var html = "";
-    html += "X回転 : " + beta + "<br>";
-    html += "Y回転 : " + gamma + "<br>";
-    html += 'Z回転 : ' + alpha;
-    $("#debug").html(html);
-
-    $zo.css({
-      "-webkit-transform": "rotateX(" + (180 + beta) + "deg) rotateY(" + (180 + gamma) + "deg) rotateZ(" + alpha + "deg)",
-      "transform": "rotateX(" + (180 + beta) + "deg) rotateY(" + (180 + gamma) + "deg) rotateZ(" + alpha + "deg)"
-    })
-  }
-})();
+}
