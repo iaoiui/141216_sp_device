@@ -1,36 +1,18 @@
-(function () {
-  var circle;
-  var luxTxt;
-  var lux = 0;
-  var r = 0;
+const elCircle = document.querySelector('#circle');
+const elLux = document.querySelector('#lux-value');
 
-  $(function () {
-    // AmbientLight Event
-    window.addEventListener("devicelight", devicelightHandler);
-    circle = $("#circle");
-    luxTxt = $("#lux_txt");
-    setInterval(loop, 30 / 1000);
-  });
+// 環境光を取得するイベント
+window.addEventListener('devicelight', deviceLightHandler);
 
-  // 照度が変化
-  function devicelightHandler(event) {
-    lux = event.value;
-    luxTxt.html(lux + "lux");
-  }
+// 照度が変化
+function deviceLightHandler(event) {
+  const lux = event.value;
+  elLux.innerHTML = `${lux}lux`;
 
-  function loop() {
-    r += (lux * 0.7 - r) * 0.2;
+  // 明るさを半径に変換
+  const r = lux / 300 * 100 * 0.5;
 
-    circle.css({
-      width: r * 2,
-      height: r * 2,
-      marginTop: -r + "px",
-      marginLeft: -r + "px",
-      "border-radius": r + "px"
-    });
-
-    luxTxt.css({
-      marginTop: -Math.floor(luxTxt.height() / 2)
-    });
-  }
-})();
+  // 円の大きさを更新
+  elCircle.style.width = r * 2 + 'vw';
+  elCircle.style.height = r * 2 + 'vw';
+}

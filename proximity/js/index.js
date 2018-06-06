@@ -1,5 +1,5 @@
-const textNear = $('#font_1');
-const textFar = $('#font_2');
+const textNear = document.querySelector('#font_1');
+const textFar = document.querySelector('#font_2');
 
 window.addEventListener('deviceproximity', deviceProximityHandler);
 
@@ -16,23 +16,12 @@ function deviceProximityHandler(event) {
 
 // 近
 function showNear() {
-  textFar
-    .stop()
-    .transition({scale: 0});
-  textNear
-    .stop()
-    .css({display: 'block', scale: 1.5})
-    .transition({scale: 1}, 500, 'easeOutCubic');
+  textFar.style.display = "none";
+  textNear.style.display = "block";
 }
 
 // 遠
 function showFar() {
-  textFar
-    .stop()
-    .transition({scale: 1});
-  textNear
-    .stop()
-    .transition({scale: 1.5}, 200, 'easeInCubic', function () {
-      $(this).css({display: 'none'});
-    });
+  textFar.style.display = "block";
+  textNear.style.display = "none";
 }

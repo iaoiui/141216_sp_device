@@ -1,18 +1,23 @@
-@charset "UTF-8";
-
 #circle {
   background: #d5fa70;
+  border-radius: 50%;
+  /* 中央寄せ */
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
-#lux_txt {
-  width: 100%;
-  position: absolute;
-  top: 50%;
+#lux-value {
+
   color: #000000;
   font-size: 2em;
   font-weight: bold;
   text-align: center;
+  /* 中央寄せ */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

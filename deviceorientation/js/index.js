@@ -1,4 +1,6 @@
-let $zo = $('#zo');
+const elAnimal = document.querySelector('#animal');
+const elDebug = document.querySelector('#debug');
+
 window.addEventListener(
   'deviceorientation',
   deviceOrientationHandler);
@@ -12,13 +14,14 @@ function deviceOrientationHandler(event) {
   const gamma = event.gamma;
   // Z軸
   const alpha = event.alpha;
-  let html = ``;
-  html += 'X回転 : ' + beta + '<br>';
-  html += 'Y回転 : ' + gamma + '<br>';
-  html += 'Z回転 : ' + alpha;
-  $('#debug').html(html);
 
-  $zo.css({
-    'transform': 'rotateX(' + (180 + beta) + 'deg) rotateY(' + (180 + gamma) + 'deg) rotateZ(' + alpha + 'deg)'
-  });
+  // グラフィックを傾ける
+  elAnimal.style.transform = `rotateX(${beta + 180}deg) rotateY(${gamma + 180}deg) rotateZ(${alpha}deg)`;
+
+  // ログを出力する
+  let html = ``;
+  html += 'X回転 : ' + beta + '<br />';
+  html += 'Y回転 : ' + gamma + '<br />';
+  html += 'Z回転 : ' + alpha;
+  elDebug.innerHTML = html;
 }

@@ -1,10 +1,6 @@
-const $compass = $('#compass');
+const $compass = document.querySelector('#compass');
 window.addEventListener('deviceorientation', deviceOrientationHandler);
 
-/**
- *
- * @param event
- */
 function deviceOrientationHandler(event) {
   //ジャイロセンサー情報取得
   // X軸
@@ -17,13 +13,11 @@ function deviceOrientationHandler(event) {
   // 方角
   const compassHeading = getCompassHeading(alpha, beta, gamma);
 
-  $('#debug').html('方角 : ' + compassHeading);
+  document.querySelector('#debug').innerHTML = (`方角 : ${Math.round(compassHeading * 100) / 100}度`);
 
   const direction = 360 - compassHeading;
 
-  $compass.css({
-    'transform': 'rotateZ(' + direction + 'deg)'
-  });
+  $compass.style.transform = 'rotateZ(' + direction + 'deg)';
 }
 
 /**

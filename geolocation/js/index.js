@@ -8,7 +8,7 @@ function geoSuccess(position) {
   const lng = position.coords.longitude;
   // 緯度経度の誤差
   const accuracy = Math.floor(position.coords.accuracy);
-  document.querySelector('#accuracy').innerHTML = `緯度経度の誤差 : ${accuracy}, 階数 : ${position.coords.floorLevel}`;
+  document.querySelector('#accuracy').innerHTML = `緯度経度の誤差 : ${accuracy}}`;
 
   setMap(lat, lng);
 }
